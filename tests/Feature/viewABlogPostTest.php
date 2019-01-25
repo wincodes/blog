@@ -15,6 +15,7 @@ class viewABlogPostTest extends TestCase
      */
     public function testCanViewABlogPost()
     {
+        
         //arrangement step
         //
         //action
