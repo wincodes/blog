@@ -9,13 +9,13 @@ class PostsController extends Controller
 {
     public function index()
     {
-        $post = Post::all();
+        $post = Post::orderby('id', 'desc')->paginate(10);
        return view('welcome')->with('posts', $post);
     }
 
-    public function show($id)
+    public function show($title)
     {
-        $post = Post::find($id);
+        $post = Post::where('title', $title)->get();
         return $post;
     }
 }
