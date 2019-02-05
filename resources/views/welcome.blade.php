@@ -11,7 +11,7 @@
                   <p class="card-text">{{substr($post->body, 0, 50)}}...</p>
                   <small>{{substr($post->created_at, 0, 10)}}</small> 
                   <br> 
-                  <a href="post/{{$post->title}}" class="btn btn-primary">continue reading</a>
+                  <a href="post/{{$post->id}}/{{$post->title}}" class="btn btn-primary">continue reading</a>
                 </div>
         </div>
         <br>              

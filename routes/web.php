@@ -17,4 +17,8 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/post/{title}', 'PostsController@show');
+Route::get('/post/{id}/{title}', 'PostsController@show');
+
+
+Route::get('/post/new', 'PostsController@new');
+Route::post('/post/store', 'PostsController@store');

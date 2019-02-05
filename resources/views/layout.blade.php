@@ -26,7 +26,11 @@
                           <a class="nav-link" href="/">Blog <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="/about">About</a>
+                          <a class="nav-link" href="/post/new">Add Post</a>
+                        </li>
+
+                        <li class="nav-item">
+                                <a class="nav-link" href="/about">About</a>
                         </li>
 
                         <li class="nav-item">
@@ -52,6 +56,7 @@
                       </form>
                     </div>
                 </nav>
+
             <div class="container">
                 <div class="row">
                     <div class="col-2">
@@ -60,6 +65,26 @@
                         
                     </div> 
                     <div class="content col-8">
+                            @if (count($errors)> 0)
+                            @foreach ($errors->all() as $error)
+                            <div class="alert alert-danger">
+                                    {{$error}} 
+                                  </div>
+                            @endforeach
+                            
+                        @endif
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                              {{session('success')}} 
+                            </div>
+                        @endif
+            
+                        @if (session('error'))
+                            <div class="alert alert-danger">
+                              {{session('error')}} 
+                            </div>
+                        @endif
+                        
                         @yield('content') 
                     </div>
                     <div class="col-2">
