@@ -11,14 +11,25 @@
 |
 */
 
-Route::get('/', 'PostsController@index');
+Route::get('/', 'BlogController@index');
 
 Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/post/{id}/{title}', 'PostsController@show');
+//Route::get('/post/view/{id}/{title}', 'BlogController@show');
+Route::get('blog/{id}', 'BlogController@show');
 
 
-Route::get('/post/new', 'PostsController@new');
-Route::post('/post/store', 'PostsController@store');
+Route::get('/post/new', 'PostsController@new')->middleware('auth');
+
+Route::post('/blog', 'BlogController@store')->middleware('auth');
+
+Route::get('/blog/{id}/edit', 'BlogController@edit')->middleware('auth');
+Route::patch('/blog/{id}', 'BlogController@update')->middleware('auth');
+Route::delete('/blog/{id}', 'BlogController@destroy')->middleware('auth');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/secure/logout', 'logoutController@index');
